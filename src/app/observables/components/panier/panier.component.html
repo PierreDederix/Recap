@@ -1,1 +1,7 @@
-<p>panier works!</p>
+<a routerLink="/observables">Retour à la liste des burgers</a>
+
+<ul>
+    <li *ngFor="let burger of panier">
+        {{ burger.name }}
+    </li>
+</ul>

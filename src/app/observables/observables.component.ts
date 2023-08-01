@@ -2,6 +2,7 @@ import { Component, numberAttribute } from '@angular/core';
 import { catchError, delay, EMPTY, interval, Observable, of, pipe, startWith, switchMap, tap } from 'rxjs';
 import { Burger } from '../services/burgers';
 import { BurgerApiService } from './service/burger-api.service';
+import { PanierService } from './service/panier.service';
 
 @Component({
   selector: 'app-observables',
@@ -16,7 +17,7 @@ export class ObservablesComponent {
   burgers$?: Observable<Burger[]>;
   lastReception ?: Date;
 
-  constructor(private _burgerService : BurgerApiService) {
+  constructor(private _burgerService : BurgerApiService, private _panierService : PanierService) {
     
     this.demoSub();
     // this.obsHot$.subscribe((data:number) =>console.log(`interval - ${data}`));
@@ -59,6 +60,10 @@ export class ObservablesComponent {
       
     })
 
+  }
+
+  addToPanier(burger : Burger) : void {
+    this._panierService.ajouter(burger)
   }
 
 }
