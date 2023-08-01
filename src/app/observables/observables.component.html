@@ -1,0 +1,16 @@
+<a routerLink="/obs/add">Ajouter un burger</a>
+<div class="card-container" *ngIf="burgers$ | async as burgers, else loading">
+    <p *ngIf="lastReception">Dernière réception : {{lastReception | date : 'HH:mm'}}</p>
+    <div class="burger-card" *ngFor="let burger of burgers">
+        <div *ngIf="!burger.available" class="available">Indisponible</div>
+        <h2>{{burger.name}}</h2>
+        <img [src]="burger.picture" [alt]="burger.name">
+        <p>{{burger.price}} euros</p>
+        
+    </div>
+</div>
+<a routerLink="/obs/panier">Voir le panier</a>
+
+<ng-template #loading>
+    <p>loading...</p>
+</ng-template>

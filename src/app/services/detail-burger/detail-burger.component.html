@@ -1,0 +1,14 @@
+<div *ngIf="burger">
+    <h1>Détail du {{burger.name}}</h1>
+    <a routerLink="/services">Revenir à la liste des burgers</a>
+    <div>
+        <img style="width: 450px;" [src]="burger.picture" [alt]="burger.name">
+        <h2>Liste des ingrédients :</h2>
+        <ul>
+            <li *ngFor="let ingredient of burger.ingredients">
+                {{ ingredient }}
+            </li>
+        </ul>
+        <p>Prix : {{burger.price}} euros</p>
+    </div>
+</div>

@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.chapter {
+    background-color: lightsteelblue;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+}
+
+.bg-red {
+    background-color: red;
+    color: white;
+}
+.bg-gray {
+    background-color: gray;
+}
+.bg-blue {
+    background-color: lightblue;
+}

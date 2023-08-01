@@ -1,0 +1,38 @@
+<h1>Modifier un burger</h1>
+<a routerLink="/services">Retour à la liste des burgers</a>
+
+<form [formGroup]="burgerForm" (ngSubmit)="updateBurger()">
+    <div>
+        <input type="text" placeholder="Nom du burger" formControlName="name">
+        <span *ngIf="burgerForm.get('name')?.touched && burgerForm.get('name')?.errors?.['required']">Ce champs est requis</span>
+        <span *ngIf="burgerForm.get('name')?.errors?.['maxlength']">Ce champs doit faire moins de 150 caractères</span>
+    </div>
+
+    <div>
+        <input type="number" placeholder="Prix du burger" formControlName="price">
+        <span *ngIf="burgerForm.get('price')?.touched && burgerForm.get('price')?.errors?.['required']">Ce champs est requis</span>
+        <span *ngIf="burgerForm.get('price')?.errors?.['min']">Ce champs doit faire plus de 0 caractères</span>
+    </div>
+
+    <div>
+        <input type="text" placeholder="Lien vers l'image du burger" formControlName="picture">
+    </div>
+
+    <div>
+        <input type="checkbox" id="available" formControlName="available"> <label for="available">Disponible</label>
+    </div>
+
+    <div formArrayName="ingredients">
+        <h4>Ingrédients</h4>
+        <input type="button" value="Ajouter un ingrédient" (click)="addIngredients()">
+        <div *ngFor="let item of ingredients.controls; let i = index">
+            <input type="text" [formControlName]="i">
+            <span *ngIf="ingredients.controls[i].touched && ingredients.controls[i]?.errors?.['required']">Ce champs est requis</span>
+            <span (click)="removeIngredient(i)">❌</span>
+        </div>
+    </div>
+
+    <div>
+        <input type="submit" value="Modifier">
+    </div>
+</form>

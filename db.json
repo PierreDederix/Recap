@@ -1,0 +1,24 @@
+{
+  "burgers": [
+    {
+      "id": 1,
+      "name": "Montagnard",
+      "ingredients": [
+        "boeuf",
+        "bun",
+        "fromage"
+      ],
+      "price": "12",
+      "picture": "https://www.sherpa.net/sites/default/files/recette/burger.jpg",
+      "available": true
+    },
+    {
+      "name": "a",
+      "price": 1,
+      "picture": null,
+      "available": true,
+      "ingredients": [],
+      "id": 2
+    }
+  ]
+}

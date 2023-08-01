@@ -1,0 +1,12 @@
+<div *ngIf =" type === 'burger' ">
+    <p>Choisissez votre Burger</p>
+    <button (click)="select('cheese')">Cheese</button>
+    <button (click)="select('bacon')">Bacon</button>
+    <button (click)="select('vegan')">Vegan</button>
+</div>
+<div *ngIf =" type === 'sushi' ">
+    <p>Choisissez votre Sushi</p>
+    <button (click)="select('saumon')">Saumon</button>
+    <button (click)="select('thon')">Thon</button>
+    <button (click)="select('tofu')">Tofu</button>
+</div>

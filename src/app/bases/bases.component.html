@@ -1,0 +1,75 @@
+<div>
+    <h1>Les bases</h1>
+
+    <div class="chapter">
+        <h2>Bindings</h2>
+
+        <h3>One-Way :</h3>
+        <p>Permet d'afficher le contenu d'une propriété</p>
+        <p>Je suis {{ name }}</p>
+        
+        <h3>Two-Way :</h3>
+        <p>Permet de modifier une propriété <span> Attention ! : Il faudra importer FormsModule dans le module adéquat </span></p>
+        <input type="text" [(ngModel)]="name">
+
+        <h3>Attribute Binding</h3>
+        <p>S'utilise avec les [] pour lier un attribut html à une propriété</p>
+        <img style="width: 250px;" [src]="imgSource" alt="">
+
+        <h3>Event Binding</h3>
+        <p>S'utilise avec les () autour d'un événement et est relié à une méthode</p>
+        <p>{{ eventMsg }}</p>
+        <button (click)="clickMe()">Click Me</button>
+    </div>
+
+    <div class="chapter">
+        <h2>Pipes</h2>
+        <p>Sert à formater des données uniquement à l'affichage, ne change pas la valeur de la propriété. S'utilise avec |</p>
+        <p>Il existe des pipes de base (date, currency, uppercase, titlecase, lowercase...) et on peut aussi faire ses propres pipes (custom-pipes)</p>
+        <p>Le pipe date s'utilise soit sans argument, soit avec une locale, soit avec un format (soit locale + format) : {{ today | date : "dd/MM/yyyy"}}</p>
+        <p>Pour faire un custom-pipe : ng g p NomDuPipe</p>
+    </div>
+
+    <div class="chapter">
+        <h2>Directives</h2>
+        <h3>Component : ngClass</h3>
+        <p>Permet d'attribuer une classe css en fonction d'une expression booléenne</p>
+        <button [ngClass]="{day : !isNight, night : isNight}" (click)="toggleDayNight()">Jour 🌞 / Nuit 🌜</button>
+
+        <h3>Structural : ngIf</h3>
+        <p>Permet d'afficher du html contextuellement en fonction d'une expression booléenne</p>
+
+        <div *ngIf="!connected">
+            <p>Veuillez vous connecter</p>
+            <button (click)="login()">Me connecter</button>
+        </div>
+
+        <div *ngIf="connected">
+            <p>Bienvenue bg</p>
+            <button (click)="logout()">Me déconnecter</button>
+        </div>
+        
+        <h3>Structural : ngFor</h3>
+        <p>Permet de faire une boucle sur une liste pour l'afficher</p>
+        <p>Les pires conducteurs en vacances :</p>
+        <ul>
+            <li *ngFor="let driver of topWorstDriver; let i = index">
+                Numéro {{ i +1}} - {{ driver }}
+            </li>
+        </ul>
+    </div>
+
+    <div class="chapter">
+        <h2>Input/Output</h2>
+        <p>Permet à deux composants Parent/Enfant de discuter</p>
+        <p>Input : De parent vers enfant -> Une propriété</p>
+        <p>Output : D'endant vers parent -> un Event (EventEmitter)</p>
+
+        <p>Aujourd'hui j'ai envie de</p>
+        <button (click)="setFoodType('burger')">Burger</button>
+        <button (click)="setFoodType('sushi')">Sushis</button>
+        <app-enfant [type]="foodType" (selectMeal)="changeMeal($event)"></app-enfant>
+
+        <p *ngIf="todayMeal.length>0">Super ! On va manger {{ foodType }} {{ todayMeal }} !!</p>
+    </div>
+</div>

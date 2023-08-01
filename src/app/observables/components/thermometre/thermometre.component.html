@@ -1,0 +1,6 @@
+<p>{{temperature}}°C</p>
+<div>
+    <label for="in_temperature">Changer la température</label>
+    <input type="text" id="in_temperature" [(ngModel)]="tempChange">
+    <button (click)="onChangeTemp()">Changer</button>
+</div>
