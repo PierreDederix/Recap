@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BasesComponent } from './bases/bases.component';
+import { tempGuard } from './guards/temp.guard';
 import { AddBurgerApiComponent } from './observables/components/add-burger-api/add-burger-api.component';
 import { PanierComponent } from './observables/components/panier/panier.component';
 import { ThermometreComponent } from './observables/components/thermometre/thermometre.component';
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path : 'obs/add', component : AddBurgerApiComponent },
   { path : 'burgers/add', component : AddBurgerComponent },
   { path : 'burgers/:id', component : DetailBurgerComponent },
-  { path : 'burgers/edit/:id', component : EditBurgerComponent },
+  { path : 'burgers/edit/:id', component : EditBurgerComponent, canActivate: [tempGuard] },
   // { path : '**', redirectTo : 'not-found' }
 ];
 
